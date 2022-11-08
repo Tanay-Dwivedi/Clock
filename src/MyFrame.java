@@ -7,14 +7,18 @@ public class MyFrame extends JFrame {
 
     // adding the Calendar to get current date and time
     Calendar calendar;
-    SimpleDateFormat simpleDateFormat;
+    SimpleDateFormat simpleDayFormat;
     SimpleDateFormat simpleTimeFormat;
+    SimpleDateFormat simpleDateFormat;
     // to display the time
     JLabel jTimeLabel;
-    // to display the date
+    // to display the day
     JLabel jDayLabel;
+    // to display the date
+    JLabel jDateLabel;
     String time;
     String day;
+    String date;
 
     // creating constructor for MyFrame
     MyFrame() {
@@ -22,12 +26,14 @@ public class MyFrame extends JFrame {
         this.setTitle("CLOCK");
         this.setLayout(new FlowLayout());
         this.setSize(550, 200);
-        this.setResizable(false);
+        // this.setResizable(false);
 
         // format of  our time
-        simpleTimeFormat = new SimpleDateFormat("hh:mm:ss a  z");
+        simpleTimeFormat = new SimpleDateFormat("HH:mm:ss {z}");
+        // format of our day
+        simpleDayFormat = new SimpleDateFormat("EEEE");
         // format of our date
-        simpleDateFormat = new SimpleDateFormat("EEEE");
+        simpleDateFormat = new SimpleDateFormat("dd MMMMM, yyyy");
 
         // instantiating the time label
         jTimeLabel = new JLabel();
@@ -45,10 +51,17 @@ public class MyFrame extends JFrame {
         // changing the font
         jDayLabel.setFont(new Font("Ink Free", Font.PLAIN, 35));
 
+        // instantiating the date label
+        jDateLabel = new JLabel();
+        // changing the font
+        jDateLabel.setFont(new Font("Ink Free", Font.PLAIN, 25));
+
         //  adding the time label to the jFrame
         this.add(jTimeLabel);
         // adding the day label to the jFrame
         this.add(jDayLabel);
+        // adding date label to the frame
+        this.add(jDateLabel);
 
         this.setVisible(true);
 
@@ -65,10 +78,15 @@ public class MyFrame extends JFrame {
             // adding the string to the label
             jTimeLabel.setText(time);
 
-            // getting and storing the time in a string
-            day = simpleDateFormat.format(Calendar.getInstance().getTime());
+            // getting and storing the day in a string
+            day = simpleDayFormat.format(Calendar.getInstance().getTime());
             // adding the string to the label
             jDayLabel.setText(day);
+
+            // getting and storing the date in a string
+            date = simpleDateFormat.format(Calendar.getInstance().getTime());
+            // adding the string to the label
+            jDateLabel.setText(date);
 
             try {
                 Thread.sleep(1000);
@@ -76,7 +94,5 @@ public class MyFrame extends JFrame {
                 throw new RuntimeException(e);
             }
         }
-
     }
-
 }
