@@ -6,6 +6,5 @@ public class Clock {
         // creating an instance of  MyFrame class
         new MyFrame();
 
-
     }
 }

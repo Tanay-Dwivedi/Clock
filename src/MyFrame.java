@@ -5,8 +5,6 @@ import java.util.Calendar;
 
 public class MyFrame extends JFrame {
 
-    // adding the Calendar to get current date and time
-    Calendar calendar;
     SimpleDateFormat simpleDayFormat;
     SimpleDateFormat simpleTimeFormat;
     SimpleDateFormat simpleDateFormat;
@@ -25,7 +23,8 @@ public class MyFrame extends JFrame {
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setTitle("CLOCK");
         this.setLayout(new FlowLayout());
-        this.setSize(550, 200);
+        this.setSize(500, 200);
+        this.setLocationRelativeTo(null);
         // this.setResizable(false);
 
         // format of  our time
@@ -38,7 +37,7 @@ public class MyFrame extends JFrame {
         // instantiating the time label
         jTimeLabel = new JLabel();
         // changing the font
-        jTimeLabel.setFont(new Font("Verdana", Font.BOLD, 50));
+        jTimeLabel.setFont(new Font("Verdana", Font.ITALIC, 60));
         // changing the foreground color
         jTimeLabel.setForeground(new Color(0x7FFFD4));
         // changing the background color
@@ -49,12 +48,12 @@ public class MyFrame extends JFrame {
         // instantiating the day label
         jDayLabel = new JLabel();
         // changing the font
-        jDayLabel.setFont(new Font("Ink Free", Font.PLAIN, 35));
+        jDayLabel.setFont(new Font("Ink Free", Font.BOLD, 40));
 
         // instantiating the date label
         jDateLabel = new JLabel();
         // changing the font
-        jDateLabel.setFont(new Font("Ink Free", Font.PLAIN, 25));
+        jDateLabel.setFont(new Font("Ink Free", Font.BOLD, 30));
 
         //  adding the time label to the jFrame
         this.add(jTimeLabel);
@@ -77,16 +76,19 @@ public class MyFrame extends JFrame {
             time = simpleTimeFormat.format(Calendar.getInstance().getTime());
             // adding the string to the label
             jTimeLabel.setText(time);
+            jTimeLabel.setVerticalAlignment(SwingConstants.CENTER);
 
             // getting and storing the day in a string
             day = simpleDayFormat.format(Calendar.getInstance().getTime());
             // adding the string to the label
             jDayLabel.setText(day);
+            jDayLabel.setVerticalAlignment(SwingConstants.CENTER);
 
             // getting and storing the date in a string
             date = simpleDateFormat.format(Calendar.getInstance().getTime());
             // adding the string to the label
             jDateLabel.setText(date);
+            jDateLabel.setVerticalAlignment(SwingConstants.CENTER);
 
             try {
                 Thread.sleep(1000);
