@@ -2,6 +2,10 @@
 
 public class Clock {
     public static void main(String[] args) {
-        System.out.println("Clock⏰");
+
+        // creating an instance of  MyFrame class
+        new MyFrame();
+
+
     }
 }
