@@ -9,7 +9,7 @@ public class MyFrame extends JFrame {
     Calendar calendar;
     SimpleDateFormat simpleDateFormat;
     // to display the time
-    JLabel jLabel;
+    JLabel jTimeLabel;
     String time;
 
     // creating constructor for MyFrame
@@ -23,10 +23,20 @@ public class MyFrame extends JFrame {
         // format of  our time
         simpleDateFormat = new SimpleDateFormat("hh:mm:ss a  z");
         // instantiating the jLabel
-        jLabel = new JLabel();
+        jTimeLabel = new JLabel();
+
+        jTimeLabel.setSize(MyFrame.WIDTH, 80);
+        // changing the font
+        jTimeLabel.setFont(new Font("Righteous", Font.PLAIN, 65));
+        // changing the foreground color
+        jTimeLabel.setForeground(new Color(0x7FFFD4));
+        // changing the background color
+        jTimeLabel.setBackground(Color.BLACK);
+        // to display the background to the frame
+        jTimeLabel.setOpaque(true);
 
         //  adding the label to the jFrame
-        this.add(jLabel);
+        this.add(jTimeLabel);
         this.setVisible(true);
 
         // method tp update our time every 1 second
@@ -40,7 +50,7 @@ public class MyFrame extends JFrame {
             // getting and storing the time in a string
             time = simpleDateFormat.format(Calendar.getInstance().getTime());
             // adding the string to the label
-            jLabel.setText(time);
+            jTimeLabel.setText(time);
             try {
                 Thread.sleep(1000);
             } catch (InterruptedException e) {
